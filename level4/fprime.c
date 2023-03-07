@@ -1,26 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char **argv)
+int main(int ac, char **av)
 {
-    if (argc == 2)
-    {
-        int i = 1;
-        int num = atoi(argv[1]);
-        if (num == 1)
-            printf("1");
-        while(num >= ++i)
-        {
-            if (num % i == 0)
-            {
-                printf("%d", i);
-                if (num == i)
-                    break;
-                printf("*");
-                num /= i;
-                i = 1;
-            }
-        }
-    }
-    printf("\n");
+	if (ac == 2)
+	{
+		int nbr = atoi(av[1]);
+		int i = 2;
+		while(i <= nbr)
+		{
+			if(nbr % i == 0)
+			{
+				nbr /= i;
+				printf("%d", i);
+				if(nbr < i)
+					break;
+				printf("*");
+				i --;
+			}
+			i++;
+		}
+	}
+	printf("\n");
 }
